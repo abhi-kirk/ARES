@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARES — Autonomous Robot Engineering Systems</title>
+  <style>
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #13161d;
+      --border:    #1e2330;
+      --accent:    #e8601c;
+      --accent2:   #f5a623;
+      --text:      #e2e4ea;
+      --muted:     #6b7280;
+      --tag-bg:    #1a1f2e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(13, 15, 20, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 32px 56px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Section ── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    .section-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Project card ── */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 24px 28px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .card-title span { color: var(--accent2); }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      padding: 0 28px 20px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .tag-accent {
+      color: var(--accent);
+      border-color: rgba(232, 96, 28, 0.3);
+      background: rgba(232, 96, 28, 0.08);
+    }
+
+    .rerun-embed {
+      border-top: 1px solid var(--border);
+      background: #080a0f;
+    }
+
+    .rerun-embed iframe {
+      display: block;
+      width: 100%;
+      height: 620px;
+      border: none;
+    }
+
+    .embed-caption {
+      padding: 12px 28px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .embed-caption a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .embed-caption a:hover { text-decoration: underline; }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Upcoming card ── */
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .upcoming-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      opacity: 0.55;
+    }
+
+    .upcoming-card .card-title { font-size: 16px; margin-bottom: 8px; }
+
+    .upcoming-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-logo" href="#"><span>ARES</span> — Autonomous Robot Engineering Systems</a>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="https://github.com/abhi-kirk" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">Controls &amp; Robotics</p>
+  <h1>Simulation to hardware,<br>algorithm by algorithm.</h1>
+  <p class="hero-sub">
+    ARES is a progressive series of robotics and GNC projects — each phase adding
+    one hard problem at a time. Algorithms are justified by data, not intuition.
+  </p>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="https://github.com/abhi-kirk" target="_blank">
+      <!-- github icon -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.532 1.03 1.532 1.03.892 1.529 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.682-.103-.253-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.202 2.393.1 2.646.64.698 1.026 1.591 1.026 2.682 0 3.841-2.337 4.687-4.565 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.417 22 12c0-5.523-4.477-10-10-10z"/>
+      </svg>
+      GitHub
+    </a>
+    <a class="btn btn-ghost" href="mailto:">Contact</a>
+  </div>
+</div>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-header">
+    <h2 class="section-title"><span>01</span> Active Projects</h2>
+    <span class="section-meta">Live telemetry — scrub the timeline</span>
+  </div>
+
+  <!-- Icarus -->
+  <div class="project-card">
+    <div class="card-header">
+      <div>
+        <p class="card-title">ARES-<span>Icarus</span></p>
+        <p class="card-desc">
+          Simulation-only rocket vertical landing GNC — progressive development from
+          1-DOF cascade PID to 6-DOF successive convexification (SpaceX approach).
+          Each phase is validated by data before the next begins.
+        </p>
+      </div>
+      <a class="btn btn-ghost" href="https://github.com/abhi-kirk/ARES-Icarus" target="_blank" style="flex-shrink:0;font-size:13px;">
+        View repo →
+      </a>
+    </div>
+
+    <div class="tags">
+      <span class="tag tag-accent">Phase 1 — Live</span>
+      <span class="tag">C++17</span>
+      <span class="tag">Cascade PID</span>
+      <span class="tag">Anti-windup</span>
+      <span class="tag">RK4</span>
+      <span class="tag">Rerun</span>
+      <span class="tag">CMake</span>
+      <span class="tag">Eigen3</span>
+    </div>
+
+    <div class="rerun-embed">
+      <iframe
+        src="https://app.rerun.io/version/0.30.2/index.html?url=https://github.com/abhi-kirk/ARES-Icarus/releases/download/v1.0-phase1/trajectory.rrd"
+        allow="cross-origin-isolated"
+        title="ARES-Icarus Phase 1 — 1-DOF PID Landing Telemetry">
+      </iframe>
+    </div>
+
+    <div class="embed-caption">
+      <span class="dot"></span>
+      Phase 1 — 1-DOF cascade PID. 300 m → 0 m/s touchdown (&lt; 0.001 m/s).
+      Use the timeline scrubber to replay any moment of the descent.
+      &nbsp;·&nbsp;
+      <a href="https://github.com/abhi-kirk/ARES-Icarus/releases/download/v1.0-phase1/trajectory.rrd">Download .rrd</a>
+    </div>
+  </div>
+
+  <!-- Upcoming -->
+  <div style="margin-top: 56px;">
+    <div class="section-header">
+      <h2 class="section-title"><span>02</span> Upcoming</h2>
+      <span class="section-meta">In progress</span>
+    </div>
+
+    <div class="upcoming-grid">
+      <div class="upcoming-card">
+        <div class="upcoming-pill">Icarus — Next</div>
+        <p class="card-title">Phase 1.5 — 3-DOF Translation</p>
+        <p class="card-desc" style="font-size:13px;">Wind disturbances, lateral drift, moving landing pad. First 3D trajectory in the viewer.</p>
+      </div>
+
+      <div class="upcoming-card">
+        <div class="upcoming-pill">Talos — In progress</div>
+        <p class="card-title">ARES-Talos</p>
+        <p class="card-desc" style="font-size:13px;">Two-wheel self-balancing robot. STM32 inner-loop PID, Jetson Orin Nano for planning and Foxglove telemetry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span>ARES — Autonomous Robot Engineering Systems</span>
+  <span>
+    <a href="https://github.com/abhi-kirk" target="_blank">github.com/abhi-kirk</a>
+  </span>
+</footer>
+
+</body>
+</html>
