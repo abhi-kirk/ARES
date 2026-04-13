@@ -93,10 +93,52 @@
       padding: clamp(36px, 5vh, 56px) 0 clamp(28px, 4vh, 44px);
       border-bottom: 1px solid var(--border);
       margin-bottom: clamp(36px, 5vh, 56px);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .intro-cards {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .intro-project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .intro-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      color: var(--text);
+    }
+
+    .intro-card-name span { color: var(--accent2); }
+
+    .intro-card-subtitle {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 2px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: -4px;
+      margin-bottom: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
     .intro-label {
@@ -159,14 +201,7 @@
     }
 
     .intro-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      padding: 20px 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      min-width: 220px;
+      display: none;
     }
 
     .meta-row {
@@ -192,8 +227,7 @@
     .meta-value.accent { color: var(--accent); }
 
     @media (max-width: 700px) {
-      .intro { grid-template-columns: 1fr; }
-      .intro-meta { display: none; }
+      .intro-cards { grid-template-columns: 1fr; }
     }
 
     /* ── Section ── */
@@ -257,6 +291,30 @@
       color: var(--muted);
       max-width: 680px;
       line-height: 1.7;
+    }
+
+    .card-bullets {
+      list-style: none;
+      font-size: clamp(13px, 0.85vw, 14px);
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .card-bullets li {
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .card-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
 
     .card-link {
@@ -380,6 +438,45 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
+    .talos-media {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .talos-media-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .talos-media-card-label {
+      padding: 12px 16px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    .talos-media-card img {
+      width: 100%;
+      display: block;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .talos-media-card .embed-caption {
+      padding: 10px 16px;
+    }
+
+    @media (max-width: 700px) {
+      .talos-media { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 600px) {
       .nav-author { display: none; }
       nav ul { gap: 18px; }
@@ -400,6 +497,7 @@
     </div>
     <ul>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="AJain_Resume.pdf" target="_blank">Resume</a></li>
       <li><a href="https://github.com/abhi-kirk" target="_blank">GitHub</a></li>
     </ul>
   </div>
@@ -409,36 +507,43 @@
 <div class="inner">
   <div class="intro">
     <div class="intro-left">
-      <p class="intro-label">GNC &amp; Controls Engineering</p>
-      <h1 class="intro-heading">Simulation to hardware,<br>one hard problem at a time.</h1>
-      <p class="intro-body">
-        Personal GNC and controls engineering projects. <strong>ARES</strong> is a codename —
-        Autonomous <em>Rocket</em> Engineering Simulation (Icarus) and
-        Autonomous <em>Robot</em> Engineering System (Talos).
-      </p>
-      <ul class="intro-points">
-        <li><strong>One hard problem per phase</strong> — each must fully succeed before the next begins</li>
-        <li><strong>No magic tuning</strong> — every gain justified by trajectory plots or grid search</li>
-        <li><strong>Algorithms match the papers</strong> — benchmarked against Acikmese, Szmuk, Blackmore</li>
-        <li><strong>Progressive stack</strong> — PID → LQR → MPC → Successive Convexification → RL</li>
-      </ul>
+      <p class="intro-label">Controls &middot; Embedded &middot; AI &middot; GNC</p>
+      <h1 class="intro-heading">Control loops, robotics, and learning algorithms.</h1>
+      <p class="intro-body"><a href="https://github.com/abhi-kirk/ARES-Talos" target="_blank" style="color:var(--text);font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);">Talos</a>: self-balancing robot on STM32 + Jetson Orin Nano.</p>
+      <p class="intro-body" style="margin-top: 8px;"><a href="https://github.com/abhi-kirk/ARES-Icarus" target="_blank" style="color:var(--text);font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);">Icarus</a>: rocket GNC simulator from cascade PID to successive convexification.</p>
     </div>
-    <div class="intro-meta">
-      <div class="meta-row">
-        <span class="meta-label">Active</span>
-        <span class="meta-value accent">ARES-Icarus</span>
+    <div class="intro-cards">
+      <div class="intro-project-card">
+        <span class="intro-card-name"><span>Talos</span></span>
+        <span class="intro-card-subtitle">Autonomous Robot Engineering System</span>
+        <div class="meta-row">
+          <span class="meta-label">Phase</span>
+          <span class="meta-value accent">2.5 / 7 — Balance PID</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Next</span>
+          <span class="meta-value">Phase 3 — Balance PID</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Stack</span>
+          <span class="meta-value">STM32 · Embedded C · Jetson</span>
+        </div>
       </div>
-      <div class="meta-row">
-        <span class="meta-label">Current phase</span>
-        <span class="meta-value">1.5 / 4 — 3-DOF PID</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Next</span>
-        <span class="meta-value">Phase 2 — Euler angles</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Stack</span>
-        <span class="meta-value">C++17 · Python · Rerun</span>
+      <div class="intro-project-card">
+        <span class="intro-card-name"><span>Icarus</span></span>
+        <span class="intro-card-subtitle">Autonomous Rocket Engineering Simulation</span>
+        <div class="meta-row">
+          <span class="meta-label">Phase</span>
+          <span class="meta-value accent">1.5 / 4 — 3-DOF PID</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Next</span>
+          <span class="meta-value">Phase 2 — Euler angles</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Stack</span>
+          <span class="meta-value">C++17 · Eigen3 · Rerun</span>
+        </div>
       </div>
     </div>
   </div>
@@ -446,25 +551,77 @@
 
 <!-- Projects -->
 <section id="projects">
+
+  <!-- 01 — Talos -->
   <div class="inner">
     <div class="section-header">
-      <h2 class="section-title"><span>01</span> Active Projects</h2>
+      <h2 class="section-title"><span>01</span> Talos</h2>
+      <span class="section-meta">Phase 2.5 — balance PID in progress</span>
+    </div>
+
+    <div class="project-header">
+      <div>
+        <p class="card-title"><span>Talos</span></p>
+        <p class="card-subtitle">Autonomous Robot Engineering System</p>
+        <ul class="card-bullets">
+          <li>STM32 F446RE inner balance loop at ~200 Hz in embedded C</li>
+          <li>Jetson Orin Nano for planning, telemetry, and future MPC/vision</li>
+          <li>Phase 1 complete: per-wheel PI velocity control with encoder feedback</li>
+          <li>Phase 2 complete: BNO055 IMU state estimation validated on bench</li>
+          <li>Phase 3: balance PID on assembled chassis</li>
+        </ul>
+      </div>
+      <a class="card-link" href="https://github.com/abhi-kirk/ARES-Talos" target="_blank">View repo →</a>
+    </div>
+
+    <div class="tags" style="padding: 0 0 18px 0;">
+      <span class="tag tag-accent">Phase 2 — IMU</span>
+      <span class="tag">STM32 F446RE</span>
+      <span class="tag">Embedded C</span>
+      <span class="tag">BNO055</span>
+      <span class="tag">Encoder PI</span>
+      <span class="tag">Jetson Orin Nano</span>
+      <span class="tag">PlotJuggler</span>
+      <span class="tag">UART Telemetry</span>
+      <span class="tag">200 Hz Loop</span>
+      <span class="tag">Sabertooth 2x12</span>
+      <span class="tag">LiPo</span>
+    </div>
+
+    <div class="talos-media">
+      <div class="talos-media-card">
+        <div class="talos-media-card-label">Bench build — Phase 2</div>
+        <img src="assets/talos-bench.jpeg" alt="Talos physical bench build — wired hardware on Yahboom chassis" />
+        <div class="embed-caption">Yahboom 2WD chassis &nbsp;·&nbsp; STM32 F446RE + Sabertooth wired &nbsp;·&nbsp; bench test rig</div>
+      </div>
+      <div class="talos-media-card">
+        <div class="talos-media-card-label">Phase 1 telemetry</div>
+        <img src="assets/pid-plots.gif" alt="Phase 1 — per-wheel PI velocity control telemetry in PlotJuggler" />
+        <div class="embed-caption">Per-wheel PI velocity control &nbsp;·&nbsp; PlotJuggler via UART bridge &nbsp;·&nbsp; 20 Hz &nbsp;·&nbsp; wheels elevated</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 — Icarus -->
+  <div class="inner" style="margin-top: 56px;">
+    <div class="section-header">
+      <h2 class="section-title"><span>02</span> Icarus</h2>
       <span class="section-meta">Live telemetry — scrub the timeline</span>
     </div>
 
-    <!-- Project header: flat, no card border -->
     <div class="project-header">
       <div>
-        <p class="card-title">ARES-<span>Icarus</span></p>
-        <p class="card-desc">
-          Simulation-only rocket vertical landing GNC. Progressive development from 1-DOF cascade PID
-          to 6-DOF successive convexification (the approach used in SpaceX Falcon 9 guidance).
-          Each phase must fully succeed — landing velocity, fuel use, and disturbance rejection
-          validated by plots — before the next begins.
-        </p>
+        <p class="card-title"><span>Icarus</span></p>
+        <p class="card-subtitle">Autonomous Rocket Engineering Simulation</p>
+        <ul class="card-bullets">
+          <li>Simulation-only rocket vertical landing GNC</li>
+          <li>Progressive: 1-DOF cascade PID → 6-DOF successive convexification (SpaceX Falcon 9 approach)</li>
+          <li>Each phase validated by trajectory plots — landing velocity, fuel use, disturbance rejection</li>
+        </ul>
       </div>
       <a class="card-link" href="https://github.com/abhi-kirk/ARES-Icarus" target="_blank">View repo →</a>
     </div>
+
     <div class="tags" style="padding: 0 0 0 0;">
       <span class="tag tag-accent">Phase 1.5 — Live</span>
       <span class="tag">C++17</span>
@@ -480,7 +637,7 @@
     </div>
   </div>
 
-  <!-- Full-width embed -->
+  <!-- Full-width Rerun embed -->
   <div class="rerun-embed">
     <iframe
       src="https://app.rerun.io/version/0.30.2/index.html?url=https://abhi-kirk.github.io/ARES/icarus-phase1.5.rrd"
@@ -498,24 +655,24 @@
       <a href="https://abhi-kirk.github.io/ARES/icarus-phase1.5.rrd">↓ .rrd</a>
     </div>
 
-    <!-- Upcoming -->
+    <!-- 03 — Upcoming -->
     <div style="margin-top: 56px;">
       <div class="section-header">
-        <h2 class="section-title"><span>02</span> Upcoming</h2>
-        <span class="section-meta">In progress</span>
+        <h2 class="section-title"><span>03</span> Upcoming</h2>
+        <span class="section-meta">Next phases</span>
       </div>
 
       <div class="upcoming-grid">
         <div class="upcoming-card">
-          <div class="upcoming-pill">Icarus — Next</div>
-          <p class="card-title">Phase 2 — 6-DOF Rotation</p>
-          <p class="card-desc" style="font-size:13px;">Euler angle attitude dynamics with gimbal-based thrust vector control. Full rotational state: roll, pitch, yaw, angular rates.</p>
+          <div class="upcoming-pill">Talos — Next</div>
+          <p class="card-title">Phase 3 — Balance PID</p>
+          <p class="card-desc" style="font-size:13px;">Upright balance on the assembled chassis. Full state x = [θ, θ̇, v] from BNO055 + encoders. Inner-loop PID on STM32 at 200 Hz.</p>
         </div>
 
         <div class="upcoming-card">
-          <div class="upcoming-pill">Talos — In progress</div>
-          <p class="card-title">ARES-Talos</p>
-          <p class="card-desc" style="font-size:13px;">Two-wheel self-balancing robot. STM32 inner-loop PID, Jetson Orin Nano for planning and Foxglove telemetry.</p>
+          <div class="upcoming-pill">Icarus — Next</div>
+          <p class="card-title">Phase 2 — 6-DOF Rotation</p>
+          <p class="card-desc" style="font-size:13px;">Euler angle attitude dynamics with gimbal-based thrust vector control. Full rotational state: roll, pitch, yaw, angular rates.</p>
         </div>
       </div>
     </div>
@@ -526,7 +683,10 @@
 <footer>
   <div class="inner footer-inner">
     <span>Abhi Jain, Ph.D. &nbsp;·&nbsp; ARES</span>
-    <a href="https://github.com/abhi-kirk" target="_blank">github.com/abhi-kirk</a>
+    <div style="display:flex; gap: 20px;">
+      <a href="AJain_Resume.pdf" target="_blank">Resume</a>
+      <a href="https://github.com/abhi-kirk" target="_blank">github.com/abhi-kirk</a>
+    </div>
   </div>
 </footer>
 
