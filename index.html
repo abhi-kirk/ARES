@@ -171,38 +171,6 @@
       font-weight: 500;
     }
 
-    .intro-points {
-      list-style: none;
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .intro-points li {
-      font-size: clamp(13px, 0.95vw, 15px);
-      color: var(--muted);
-      padding-left: 18px;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .intro-points li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .intro-points li strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .intro-meta {
-      display: none;
-    }
 
     .meta-row {
       display: flex;
@@ -266,14 +234,6 @@
       justify-content: space-between;
       gap: 20px;
       margin-bottom: 16px;
-    }
-
-    .card-header {
-      padding: clamp(18px, 2vw, 28px) clamp(18px, 2vw, 32px) 16px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
     }
 
     .card-title {
@@ -420,23 +380,6 @@
       font-family: ui-monospace, "SF Mono", Menlo, monospace;
     }
 
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 22px;
-      padding-bottom: 22px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--text); }
 
     .talos-media {
       display: grid;
@@ -499,6 +442,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="AJain_Resume.pdf" target="_blank">Resume</a></li>
       <li><a href="https://github.com/abhi-kirk" target="_blank">GitHub</a></li>
+      <li><a href="mailto:abhikirk@icloud.com">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -514,15 +458,17 @@
     </div>
     <div class="intro-cards">
       <div class="intro-project-card">
-        <span class="intro-card-name"><span>Talos</span></span>
-        <span class="intro-card-subtitle">Autonomous Robot Engineering System</span>
+        <div>
+          <span class="intro-card-name"><span>Talos</span></span>
+          <span class="intro-card-subtitle">Autonomous Robot Engineering System</span>
+        </div>
         <div class="meta-row">
           <span class="meta-label">Phase</span>
           <span class="meta-value accent">2.5 / 7 — Balance PID</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Next</span>
-          <span class="meta-value">Phase 3 — Balance PID</span>
+          <span class="meta-value">Phase 4 — LQR</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Stack</span>
@@ -530,8 +476,10 @@
         </div>
       </div>
       <div class="intro-project-card">
-        <span class="intro-card-name"><span>Icarus</span></span>
-        <span class="intro-card-subtitle">Autonomous Rocket Engineering Simulation</span>
+        <div>
+          <span class="intro-card-name"><span>Icarus</span></span>
+          <span class="intro-card-subtitle">Autonomous Rocket Engineering Simulation</span>
+        </div>
         <div class="meta-row">
           <span class="meta-label">Phase</span>
           <span class="meta-value accent">1.5 / 4 — 3-DOF PID</span>
@@ -575,7 +523,7 @@
     </div>
 
     <div class="tags" style="padding: 0 0 18px 0;">
-      <span class="tag tag-accent">Phase 2 — IMU</span>
+      <span class="tag tag-accent">Phase 2.5 — Balance PID</span>
       <span class="tag">STM32 F446RE</span>
       <span class="tag">Embedded C</span>
       <span class="tag">BNO055</span>
@@ -590,7 +538,7 @@
 
     <div class="talos-media">
       <div class="talos-media-card">
-        <div class="talos-media-card-label">Bench build — Phase 2</div>
+        <div class="talos-media-card-label">Phase 2.5 — bench build</div>
         <img src="assets/talos-bench.jpeg" alt="Talos physical bench build — wired hardware on Yahboom chassis" />
         <div class="embed-caption">Yahboom 2WD chassis &nbsp;·&nbsp; STM32 F446RE + Sabertooth wired &nbsp;·&nbsp; bench test rig</div>
       </div>
@@ -622,7 +570,7 @@
       <a class="card-link" href="https://github.com/abhi-kirk/ARES-Icarus" target="_blank">View repo →</a>
     </div>
 
-    <div class="tags" style="padding: 0 0 0 0;">
+    <div class="tags" style="padding: 0 0 18px 0;">
       <span class="tag tag-accent">Phase 1.5 — Live</span>
       <span class="tag">C++17</span>
       <span class="tag">3-DOF</span>
@@ -665,8 +613,8 @@
       <div class="upcoming-grid">
         <div class="upcoming-card">
           <div class="upcoming-pill">Talos — Next</div>
-          <p class="card-title">Phase 3 — Balance PID</p>
-          <p class="card-desc" style="font-size:13px;">Upright balance on the assembled chassis. Full state x = [θ, θ̇, v] from BNO055 + encoders. Inner-loop PID on STM32 at 200 Hz.</p>
+          <p class="card-title">Phase 4 — LQR</p>
+          <p class="card-desc" style="font-size:13px;">Replace balance PID with a linear quadratic regulator. Full state feedback on x = [θ, θ̇, v] with optimal gain matrix computed offline.</p>
         </div>
 
         <div class="upcoming-card">
@@ -679,16 +627,6 @@
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="inner footer-inner">
-    <span>Abhi Jain, Ph.D. &nbsp;·&nbsp; ARES</span>
-    <div style="display:flex; gap: 20px;">
-      <a href="AJain_Resume.pdf" target="_blank">Resume</a>
-      <a href="https://github.com/abhi-kirk" target="_blank">github.com/abhi-kirk</a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
