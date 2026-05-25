@@ -47,16 +47,25 @@ nav {
 
 .nav-left {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--accent);
   text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .nav-author {
@@ -82,6 +91,11 @@ nav a {
 nav a:hover { color: var(--text); }
 
 /* ── Intro strip ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .intro {
   padding: clamp(36px, 5vh, 56px) 0 clamp(28px, 4vh, 44px);
   border-bottom: 1px solid var(--border);
@@ -89,6 +103,39 @@ nav a:hover { color: var(--text); }
   display: flex;
   flex-direction: column;
   gap: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -8%;
+  width: 55%;
+  height: 130%;
+  background: radial-gradient(ellipse, rgba(232, 96, 28, 0.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.intro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(232, 96, 28, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.intro > * { position: relative; z-index: 1; }
+
+.intro-left {
+  animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-cards {
+  animation: fadeUp 0.55s 0.13s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .intro-cards {
@@ -134,22 +181,33 @@ nav a:hover { color: var(--text); }
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-.intro-label {
-  font-size: 11px;
+.intro-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+.intro-pill {
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 12px;
+  border: 1px solid rgba(232, 96, 28, 0.35);
+  background: rgba(232, 96, 28, 0.07);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 .intro-heading {
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: clamp(32px, 3.5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
   color: var(--text);
-  margin-bottom: 16px;
-  line-height: 1.15;
 }
 
 .intro-body {
