@@ -1,0 +1,7 @@
+<script>
+  const overlay = document.getElementById('rerunOverlay');
+  overlay.addEventListener('click', () => overlay.classList.add('hidden'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') overlay.classList.remove('hidden');
+  });
+</script>

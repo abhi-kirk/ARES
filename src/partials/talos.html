@@ -1,0 +1,49 @@
+  <!-- 01 — Talos -->
+  <div class="inner">
+    <div class="section-header">
+      <h2 class="section-title"><span>01</span> Talos</h2>
+      <span class="section-meta">Phase 2.5 — balance PID in progress</span>
+    </div>
+
+    <div class="project-header">
+      <div>
+        <p class="card-title"><span>Talos</span></p>
+        <p class="card-subtitle">Autonomous Robot Engineering System</p>
+        <ul class="card-bullets">
+          <li>STM32 F446RE inner balance loop at ~200 Hz in embedded C</li>
+          <li>Jetson Orin Nano for planning, telemetry, and future MPC/vision</li>
+          <li>Phase 1 complete: per-wheel PI velocity control with encoder feedback</li>
+          <li>Phase 2 complete: BNO055 IMU state estimation validated on bench</li>
+          <li>Phase 3: balance PID on assembled chassis</li>
+        </ul>
+      </div>
+      <a class="card-link" href="https://github.com/abhi-kirk/ARES-Talos" target="_blank">View repo →</a>
+    </div>
+
+    <div class="tags" style="padding: 0 0 18px 0;">
+      <span class="tag tag-accent">Phase 2.5 — Balance PID</span>
+      <span class="tag">STM32 F446RE</span>
+      <span class="tag">Embedded C</span>
+      <span class="tag">BNO055</span>
+      <span class="tag">Encoder PI</span>
+      <span class="tag">Jetson Orin Nano</span>
+      <span class="tag">PlotJuggler</span>
+      <span class="tag">UART Telemetry</span>
+      <span class="tag">200 Hz Loop</span>
+      <span class="tag">Sabertooth 2x12</span>
+      <span class="tag">LiPo</span>
+    </div>
+
+    <div class="talos-media">
+      <div class="talos-media-card">
+        <div class="talos-media-card-label">Phase 2.5 — bench build</div>
+        <img src="assets/images/talos-bench.jpeg" alt="Talos physical bench build — wired hardware on Yahboom chassis" />
+        <div class="embed-caption">Yahboom 2WD chassis &nbsp;·&nbsp; STM32 F446RE + Sabertooth wired &nbsp;·&nbsp; bench test rig</div>
+      </div>
+      <div class="talos-media-card">
+        <div class="talos-media-card-label">Phase 1 telemetry</div>
+        <img src="assets/images/pid-plots.gif" alt="Phase 1 — per-wheel PI velocity control telemetry in PlotJuggler" />
+        <div class="embed-caption">Per-wheel PI velocity control &nbsp;·&nbsp; PlotJuggler via UART bridge &nbsp;·&nbsp; 20 Hz &nbsp;·&nbsp; wheels elevated</div>
+      </div>
+    </div>
+  </div>

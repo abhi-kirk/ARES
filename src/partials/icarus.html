@@ -1,0 +1,56 @@
+  <!-- 02 — Icarus -->
+  <div class="inner" style="margin-top: 56px;">
+    <div class="section-header">
+      <h2 class="section-title"><span>02</span> Icarus</h2>
+      <span class="section-meta">Live telemetry — scrub the timeline</span>
+    </div>
+
+    <div class="project-header">
+      <div>
+        <p class="card-title"><span>Icarus</span></p>
+        <p class="card-subtitle">Autonomous Rocket Engineering Simulation</p>
+        <ul class="card-bullets">
+          <li>Simulation-only rocket vertical landing GNC</li>
+          <li>Progressive: 1-DOF cascade PID → 6-DOF successive convexification (SpaceX Falcon 9 approach)</li>
+          <li>Each phase validated by trajectory plots — landing velocity, fuel use, disturbance rejection</li>
+        </ul>
+      </div>
+      <a class="card-link" href="https://github.com/abhi-kirk/ARES-Icarus" target="_blank">View repo →</a>
+    </div>
+
+    <div class="tags" style="padding: 0 0 18px 0;">
+      <span class="tag tag-accent">Phase 1.5 — Live</span>
+      <span class="tag">C++17</span>
+      <span class="tag">3-DOF</span>
+      <span class="tag">Cascade PID</span>
+      <span class="tag">Wind Model</span>
+      <span class="tag">Moving Landing Pad</span>
+      <span class="tag">Anti-windup</span>
+      <span class="tag">RK4</span>
+      <span class="tag">Rerun</span>
+      <span class="tag">CMake</span>
+      <span class="tag">Eigen3</span>
+    </div>
+  </div>
+
+  <!-- Full-width Rerun embed -->
+  <div class="rerun-embed">
+    <div class="rerun-overlay" id="rerunOverlay">
+      <span class="rerun-overlay-hint">Click to interact &nbsp;·&nbsp; Esc to release</span>
+    </div>
+    <iframe
+      src="https://app.rerun.io/version/0.30.2/index.html?url=https://abhi-kirk.github.io/ARES/assets/data/icarus-phase1.5.rrd"
+      allow="cross-origin-isolated"
+      title="ARES-Icarus Phase 1.5 — 3-DOF PID Landing Telemetry">
+    </iframe>
+  </div>
+
+  <div class="inner">
+    <div class="embed-caption">
+      Phase 1.5 — 3-DOF cascade PID &nbsp;·&nbsp;
+      300 m descent, wind + moving pad &nbsp;·&nbsp;
+      Vz = −0.30 m/s &nbsp;·&nbsp; pad miss &lt; 0.1 m &nbsp;·&nbsp; 178 kg fuel
+      &nbsp;&nbsp;
+      <a href="https://abhi-kirk.github.io/ARES/assets/data/icarus-phase1.5.rrd">↓ .rrd</a>
+    </div>
+  </div>
