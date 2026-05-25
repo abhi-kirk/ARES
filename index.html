@@ -12,15 +12,14 @@
 <nav>
   <div class="inner nav-inner">
     <div class="nav-left">
-      <a class="nav-logo" href="#">
+      <a class="nav-logo" href="#" onclick="event.preventDefault(); location.reload();">
         <img class="nav-logo-icon" src="assets/nav-icon.png" alt="" />
         ARES
       </a>
       <span class="nav-author">Abhi Jain, Ph.D.</span>
     </div>
     <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="docs/AJain_Resume.pdf" target="_blank">Resume</a></li>
+<li><a href="docs/AJain_Resume.pdf" target="_blank">Resume</a></li>
       <li><a href="https://github.com/abhi-kirk" target="_blank">GitHub</a></li>
       <li><a href="mailto:abhikirk@icloud.com">Contact</a></li>
     </ul>
@@ -82,15 +81,15 @@
 
 <section id="projects">
   <!-- 01 — Talos -->
-  <div class="inner">
+  <div class="inner" id="talos">
     <div class="section-header">
-      <h2 class="section-title"><span>01</span> Talos</h2>
+      <h2 class="section-title"><a class="anchor-heading" href="#talos"><span>01</span> Talos</a></h2>
       <span class="section-meta">Phase 2.5 — balance PID in progress</span>
     </div>
 
     <div class="project-header">
       <div>
-        <p class="card-title"><span>Talos</span></p>
+        <p class="card-title"><a class="anchor-heading" href="#talos"><span>Talos</span></a></p>
         <p class="card-subtitle">Autonomous Robot Engineering System</p>
         <ul class="card-bullets">
           <li>STM32 F446RE inner balance loop at ~200 Hz in embedded C</li>
@@ -132,15 +131,15 @@
   </div>
 
   <!-- 02 — Icarus -->
-  <div class="inner" style="margin-top: 56px;">
+  <div class="inner" id="icarus" style="margin-top: 56px;">
     <div class="section-header">
-      <h2 class="section-title"><span>02</span> Icarus</h2>
+      <h2 class="section-title"><a class="anchor-heading" href="#icarus"><span>02</span> Icarus</a></h2>
       <span class="section-meta">Live telemetry — scrub the timeline</span>
     </div>
 
     <div class="project-header">
       <div>
-        <p class="card-title"><span>Icarus</span></p>
+        <p class="card-title"><a class="anchor-heading" href="#icarus"><span>Icarus</span></a></p>
         <p class="card-subtitle">Autonomous Rocket Engineering Simulation</p>
         <ul class="card-bullets">
           <li>Simulation-only rocket vertical landing GNC</li>
